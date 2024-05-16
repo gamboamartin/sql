@@ -2,6 +2,7 @@
 
 use gamboamartin\errores\errores;
 use gamboamartin\src\sql;
+use gamboamartin\test\liberator;
 use gamboamartin\test\test;
 
 
@@ -11,6 +12,23 @@ class sqlTest extends test {
     {
         parent::__construct($name);
         $this->errores = new errores();
+    }
+
+    public function test_limpia_espacios_dobles(): void
+    {
+        errores::$error = false;
+        $sql = new sql();
+        $sql = new liberator($sql);
+
+        $txt = '     ';
+        $resultado = $sql->limpia_espacios_dobles($txt);
+        //print_r($resultado);exit;
+        $this->assertIsString( $resultado);
+        $this->assertNotTrue(errores::$error);
+        $this->assertEquals(' ',$resultado);
+
+
+        errores::$error = false;
     }
 
     public function test_valida_in(): void
