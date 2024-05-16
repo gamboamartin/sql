@@ -17,13 +17,42 @@ class sql{
 
     /**
      * POR DOCUMENTAR EN WIKI FINAL REV
+     * Función para crear una consulta SQL con operador IN
+     *
+     * @param string $llave La clave que será buscada en la consulta SQL.
+     * @param string $values_sql Una cadena de texto con los valores que serán buscados con el operador IN.
+     * @return string|array La consulta SQL generada, o un array en caso de error.
+     * @version 16.284.1
+     */
+    final public function in(string $llave, string $values_sql): string|array
+    {
+        $valida = $this->valida_in(llave: $llave, values_sql: $values_sql);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al validar in', data: $valida);
+        }
+
+        $in_sql = '';
+        if($values_sql!==''){
+            $in_sql.="$llave IN ($values_sql)";
+        }
+
+        $in_sql = $this->limpia_espacios_dobles(txt: $in_sql);
+        if(errores::$error){
+            return $this->error->error(mensaje: 'Error al limpiar sql', data: $in_sql);
+        }
+
+        return $in_sql;
+    }
+
+    /**
+     * POR DOCUMENTAR EN WIKI FINAL REV
      * Limpia todos los espacios dobles definidos en un texto
      * @param string $txt Texto a limpiar
      * @param int $n_iteraciones no de veces que ejecutara la limpieza
      * @return string
      * @version 16.271.1
      */
-    final public function limpia_espacios_dobles(string $txt, int $n_iteraciones = 10): string
+    private function limpia_espacios_dobles(string $txt, int $n_iteraciones = 10): string
     {
         $iteracion = 0;
         while ($iteracion <= $n_iteraciones){
