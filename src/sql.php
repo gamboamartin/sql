@@ -16,13 +16,14 @@ class sql{
     }
 
     /**
-     * POR DOCUMENTAR EN WIKI FINAL REV
+     * TOTAL
      * Función para crear una consulta SQL con operador IN
      *
      * @param string $llave La clave que será buscada en la consulta SQL.
      * @param string $values_sql Una cadena de texto con los valores que serán buscados con el operador IN.
      * @return string|array La consulta SQL generada, o un array en caso de error.
      * @version 16.284.1
+     * @url https://github.com/gamboamartin/sql/wiki/src.sql.in
      */
     final public function in(string $llave, string $values_sql): string|array
     {
@@ -45,12 +46,13 @@ class sql{
     }
 
     /**
-     * POR DOCUMENTAR EN WIKI FINAL REV
+     * TOTAL
      * Limpia todos los espacios dobles definidos en un texto
      * @param string $txt Texto a limpiar
      * @param int $n_iteraciones no de veces que ejecutara la limpieza
      * @return string
      * @version 16.271.1
+     * @url https://github.com/gamboamartin/sql/wiki/src.sql.limpia_espacios_dobles
      */
     private function limpia_espacios_dobles(string $txt, int $n_iteraciones = 10): string
     {
@@ -64,7 +66,7 @@ class sql{
     }
 
     /**
-     * POR DOCUMENTAR EN WIKI FINAL REV
+     * TOTAL
      * Función para validar los valores de entrada `llave` y `values_sql`
      *
      * @param string $llave      Nombre de la llave. Debe ser una cadena de texto no vacía si `values_sql` no está vacía.
@@ -75,6 +77,7 @@ class sql{
      *
      * @final Esta función no puede ser sobrescrita en una clase hija.
      * @version 16.265.1
+     * @url https://github.com/gamboamartin/sql/wiki/src.sql.valida_in
      */
     final public function valida_in(string $llave, string $values_sql): bool|array
     {
