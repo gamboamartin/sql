@@ -95,7 +95,7 @@ class sqlTest extends test {
         $resultado = $sql->valida_in($llave, $values_sql);
         $this->assertIsArray( $resultado);
         $this->assertTrue(errores::$error);
-        $this->assertStringContainsStringIgnoringCase('Error si llave tiene info values debe tener info',$resultado['mensaje']);
+        $this->assertStringContainsStringIgnoringCase('Error: si la llave tiene contenido, $values_sql no puede estar vacío',$resultado['mensaje']);
 
         errores::$error = false;
 
@@ -113,7 +113,7 @@ class sqlTest extends test {
         $resultado = $sql->valida_in($llave, $values_sql);
         $this->assertIsArray( $resultado);
         $this->assertTrue(errores::$error);
-        $this->assertStringContainsStringIgnoringCase('Error si values_sql tiene info llave debe tener info',$resultado['mensaje']);
+        $this->assertStringContainsStringIgnoringCase('Error: si $values_sql tiene contenido, la llave no puede estar vacía',$resultado['mensaje']);
         errores::$error = false;
 
     }
